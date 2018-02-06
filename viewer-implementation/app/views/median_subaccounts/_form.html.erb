@@ -1,0 +1,52 @@
+<%= form_with(model: median_subaccount, local: true) do |form| %>
+  <% if median_subaccount.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(median_subaccount.errors.count, "error") %> prohibited this median_subaccount from being saved:</h2>
+
+      <ul>
+      <% median_subaccount.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.text_field :company_id, id: :median_subaccount_company_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subaccount_id %>
+    <%= form.text_field :subaccount_id, id: :median_subaccount_subaccount_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dev_mode %>
+    <%= form.check_box :dev_mode, id: :median_subaccount_dev_mode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request_permission %>
+    <%= form.check_box :request_permission, id: :median_subaccount_request_permission %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request_permission_text %>
+    <%= form.text_field :request_permission_text, id: :median_subaccount_request_permission_text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :excluded_selectors %>
+    <%= form.text_area :excluded_selectors, id: :median_subaccount_excluded_selectors %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_mode %>
+    <%= form.check_box :phone_mode, id: :median_subaccount_phone_mode %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

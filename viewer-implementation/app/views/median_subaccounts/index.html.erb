@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Median Subaccounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Subaccount</th>
+      <th>Dev mode</th>
+      <th>Request permission</th>
+      <th>Request permission text</th>
+      <th>Excluded selectors</th>
+      <th>Phone mode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @median_subaccounts.each do |median_subaccount| %>
+      <tr>
+        <td><%= median_subaccount.company %></td>
+        <td><%= median_subaccount.subaccount_id %></td>
+        <td><%= median_subaccount.dev_mode %></td>
+        <td><%= median_subaccount.request_permission %></td>
+        <td><%= median_subaccount.request_permission_text %></td>
+        <td><%= median_subaccount.excluded_selectors %></td>
+        <td><%= median_subaccount.phone_mode %></td>
+        <td><%= link_to 'Show', median_subaccount %></td>
+        <td><%= link_to 'Edit', edit_median_subaccount_path(median_subaccount) %></td>
+        <td><%= link_to 'Destroy', median_subaccount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Median Subaccount', new_median_subaccount_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @median_subaccount.company %>
+</p>
+
+<p>
+  <strong>Subaccount:</strong>
+  <%= @median_subaccount.subaccount_id %>
+</p>
+
+<p>
+  <strong>Dev mode:</strong>
+  <%= @median_subaccount.dev_mode %>
+</p>
+
+<p>
+  <strong>Request permission:</strong>
+  <%= @median_subaccount.request_permission %>
+</p>
+
+<p>
+  <strong>Request permission text:</strong>
+  <%= @median_subaccount.request_permission_text %>
+</p>
+
+<p>
+  <strong>Excluded selectors:</strong>
+  <%= @median_subaccount.excluded_selectors %>
+</p>
+
+<p>
+  <strong>Phone mode:</strong>
+  <%= @median_subaccount.phone_mode %>
+</p>
+
+<%= link_to 'Edit', edit_median_subaccount_path(@median_subaccount) %> |
+<%= link_to 'Back', median_subaccounts_path %>
