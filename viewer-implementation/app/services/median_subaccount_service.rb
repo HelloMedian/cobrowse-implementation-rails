@@ -58,4 +58,4 @@ end
 # "phone_mode"=> false,
 # "last_socket_at"=> nil,
 # "last_screenshare_at"=> nil,
-# "d"=> "85cc320e-2dbf-4785-89f8-9e2f5725eb49"}
+# "id"=> "85cc320e-2dbf-4785-89f8-9e2f5725eb49"}
