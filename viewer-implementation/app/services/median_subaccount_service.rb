@@ -41,6 +41,7 @@ class MedianSubaccountService
         # Median uses basic authentication for all REST API calls.
         # The API token should be set as the username and the password should be blank.
         Faraday.new('https://app.hellomedian.com/v1') do |conn|
+            # Username comes from environment variables, password is an empty string.
             conn.basic_auth(ENV["MEDIAN_API_KEY"], '')
             conn.adapter :net_http
         end

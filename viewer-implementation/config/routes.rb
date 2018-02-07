@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  root "companies#index"
+  
   resources :median_subaccounts
   resources :companies
   resources :session, only: [:index]

@@ -1,24 +1,9 @@
-# README
+# Median Viewer and Subaccount REST API Implementation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Median's cobrowse API allows you to create subaccounts via the REST API. 
 
-Things you may want to cover:
+In this example, we create a model for "companies", or indidivual companies/installs that is analogous to a company installed on your platform, and another new model called "Median Subaccount" that contains some settings data related to the subaccount.
 
-* Ruby version
+There's a [service object](https://github.com/HelloMedian/cobrowse-implementation-rails/blob/master/viewer-implementation/app/services/median_subaccount_service.rb) that we use when a company is created to make a REST API call to Median to create a new Subaccount.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Median's viewer is a Javascript bundle takes a signed JSON Web Token to initiate a CoBrowsing session. You can see a commented example of how to generate a signed token in the [session controller](https://github.com/HelloMedian/cobrowse-implementation-rails/blob/master/viewer-implementation/app/controllers/session_controller.rb).

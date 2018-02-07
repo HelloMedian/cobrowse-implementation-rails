@@ -1,0 +1,131 @@
+<!doctype html>
+<html data-framework="vue">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js • TodoMVC</title>
+    <link rel="stylesheet" href="http://todomvc.com/examples/vue/node_modules/todomvc-common/base.css" integrity="Test">
+    <link rel="stylesheet" href="http://todomvc.com/examples/vue/node_modules/todomvc-app-css/index.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="todoapp" v-cloak>
+        <header class="header">
+            <h1>todos</h1>
+            <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newTodo" @keyup.enter="addTodo">
+        </header>
+        <section class="main" v-show="todos.length">
+            <input class="toggle-all" type="checkbox" v-model="allDone">
+            <ul class="todo-list">
+                <li class="todo" v-for="todo in filteredTodos" :class="{completed: todo.completed, editing: todo == editedTodo}">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" v-model="todo.completed">
+                        <label @dblclick="editTodo(todo)">{{todo.title}}</label>
+                        <button class="destroy" @click="removeTodo(todo)"></button>
+                    </div>
+                    <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)"
+                        @keyup.esc="cancelEdit(todo)">
+                </li>
+            </ul>
+        </section>
+        <footer class="footer" v-show="todos.length">
+            <span class="todo-count">
+                <strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
+            </span>
+            <ul class="filters">
+                <li>
+                    <a href="#/all" :class="{selected: visibility == 'all'}">All</a>
+                </li>
+                <li>
+                    <a href="#/active" :class="{selected: visibility == 'active'}">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a>
+                </li>
+            </ul>
+            <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
+                Clear completed
+            </button>
+        </footer>
+    </section>
+
+
+    <input class="median-exclude" placeholder="Input excluded with class name" />
+    <input data-median="exclude" placeholder="Input excluded with attribute" />
+    <input placeholder="Input not excluded" />
+
+    <footer class="info">
+        <p>Double-click to edit a todo</p>
+        <p>Written by
+            <a href="http://evanyou.me">Evan You</a>
+        </p>
+        <p>Part of
+            <a href="http://todomvc.com">TodoMVC</a>
+        </p>
+    </footer>
+
+
+    <script src="https://js.hellomedian.com/dev-assets/node_modules/todomvc-common/base.js"></script>
+    <script src="https://js.hellomedian.com/dev-assets/node_modules/director/build/director.js"></script>
+    <script src="https://js.hellomedian.com/dev-assets/node_modules/vue/dist/vue.js"></script>
+    <script src="https://js.hellomedian.com/dev-assets/js/store.js"></script>
+    <script src="https://js.hellomedian.com/dev-assets/js/app.js"></script>
+    <script src="https://js.hellomedian.com/dev-assets/js/routes.js"></script>
+
+    <script>
+        // This is an unminified version of our JS snippet we ask users to place on their site.
+
+        (function () {
+
+            var Median = window.Median = window.Median || [];
+
+            // Stop loading snippet if real Median already initialized.
+            if (Median._initialized) return;
+
+            // Warn if snippet loaded twice
+            if (Median._snippet_loaded) {
+                console.warn('Median Snippet loaded twice.');
+                return;
+            }
+
+            Median._snippet_loaded = true;
+            Median._snippet_version = '2.1.0';
+
+            Median.methods = ['init', 'identify', 'endSession'];
+
+            // Alias all methods that Median uses and pushes them into a queue
+            // When Median loads, it will execute them in the order they were called.
+            Median.factory = function (method) {
+                return function () {
+                    var args = Array.prototype.slice.call(arguments);
+                    Median.push([method, args]);
+                }
+            }
+
+            // Stub out all methods.
+            for (var i = 0; i < Median.methods.length; i++) {
+                var method = Median.methods[i];
+                Median[method] = Median.factory(method);
+            }
+
+            // Pull down and load Median
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "https://js.hellomedian.com/v1/mdn-screenshare.js";
+            var firstScript = document.getElementsByTagName('script')[0];
+            firstScript.parentNode.insertBefore(script, firstScript);
+        })();
+        
+        // After we load the snippet, we call Median.init() with the subaccount id created on the viewer side.
+        // The viewer automatically uses the first subaccount ID created.
+        Median.init('<YOUR SUBACCOUNT ID>');
+
+        // Then we identify the visitor using any valid string that we know on both the clietn
+        Median.identify('identified_visitor_1234');
+    </script>
